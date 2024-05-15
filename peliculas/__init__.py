@@ -34,15 +34,6 @@ def category():
     return pagina
 
 
-@app.route('/actor')
-def actor():
-    consulta = """SELECT first_name,last_name FROM actor ORDER BY name;
-    """
-    con = db.get_db()
-    res = con.execute(consulta)
-    lista_actores = res.fetchall()
-    pagina = render_template('actor.html', actores=lista_actores)
-    return pagina
 
 
 
