@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -6,34 +6,17 @@ with app.app_context():
     from . import db
     db.init_app(app)
 
-@app.route('/')
+    
+
+@app.route('/hello')
 def hello():
     return 'Hello, World!'
 
-@app.route('/lenguaje')
-def lenguaje():
-    consulta = """SELECT name FROM language ORDER BY name;
-    """
-    con = db.get_db()
-    res = con.execute(consulta)
-    lista_lenguajes = res.fetchall()
-    pagina = render_template('lenguaje.html', lenguajes=lista_lenguajes)
-    return pagina
+from . import categoria
+app.register_blueprint(categoria.bp)
 
-
-@app.route("/category")
-def category():
-    consulta = """
-      SELECT name FROM category
-      ORDER BY name;
-     """
-    con = db.get_db()
-    res = con.execute(consulta)
-    lista_category = res.fetchall()
-    pagina = render_template("category.html", categorias = lista_category)
-    return pagina
-
-
+from . import lenguaje
+app.register_blueprint(lenguaje.bp)
 
 
 
