@@ -17,3 +17,19 @@ def category():
     pagina = render_template("category.html", categorias = lista_category)
 
     return pagina 
+
+@bp.route('/<int:id>')
+def category():
+    consulta = """
+        SELECT name FROM category
+        WHERE category_id = 4
+        ORDER BY name;
+        """
+    con = db.get_db()
+    res = con.execute(consulta)
+    lista_category = res.fetchall()
+    pagina = render_template("category.html", categorias = lista_category)
+
+    return pagina 
+
+

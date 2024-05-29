@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="#" />
+    <title>{%block titulo %} {% endblock %}</title>
+    <link rel="stylesheet" type="#" 
+        href= "{{url_for('static', filename= 'style.css')}}">
   </head>
   <body>
-    <h1>categoria</h1>
+    <h1>{% block encabezado %} {% endblock %}</h1>
+    {% block contenido %} {% endblock %}
+    <body>
+      
+  </html>
+  {% extends 'principal.html' %}
+  {% block titulo %}Lista de Categorias {% endblock %}
+  {% block encabezado %}Categorias: {% endblock %}
+  {% block contenido %}
     <ul>
       {% for categoria in categorias %}
-      <li>{{categoria["name"]}}</li>
-      {% endfor %}
+      <li><a href= "{{url_for('categoria,detalles', id=categoria['CategoriaId'])}}">
+           {{categoria["name"] }}
+          </a></li>
     </ul>
-  </body>
+    {% endblock %}
 </html>
