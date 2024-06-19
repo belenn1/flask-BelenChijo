@@ -1,0 +1,12 @@
+{% block header %}
+<h1>{% block title %}Actores {% endblock %}</h1>
+{% endblock %} {% block content %}
+<ul>
+  {% for actor in actores %}
+  <li>
+    <a href="{{url_for('actores.detalles', id=actor['actor_id'])}}">
+      {{actor["name"] }}
+    </a>
+  </li>
+</ul>
+{% endfor %} {% endblock %}

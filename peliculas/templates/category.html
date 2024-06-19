@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>{%block titulo %} {% endblock %}</title>
-    <link rel="stylesheet" type="#" 
-        href= "{{url_for('static', filename= 'style.css')}}">
-  </head>
-  <body>
-    <h1>{% block encabezado %} {% endblock %}</h1>
-    {% block contenido %} {% endblock %}
-    <body>
-      
-  </html>
-  {% extends 'principal.html' %}
-  {% block titulo %}Lista de Categorias {% endblock %}
-  {% block encabezado %}Categorias: {% endblock %}
-  {% block contenido %}
-    <ul>
-      {% for categoria in categorias %}
-      <li><a href= "{{url_for('categoria,detalles', id=categoria['CategoriaId'])}}">
-           {{categoria["name"] }}
-          </a></li>
-    </ul>
-    {% endblock %}
-</html>
+{% block header %}
+<h1>{% block title %}Lista de Categorias {% endblock %}</h1>
+{% endblock %} {% block content %}
+<ul>
+  {% for categoria in categorias %}
+  <li>
+    <a href="{{url_for('categoria.detalles', id=categoria['CategoriaId'])}}">
+      {{categoria["name"] }}
+    </a>
+  </li>
+</ul>
+{% endfor %} {% endblock %}

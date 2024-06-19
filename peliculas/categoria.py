@@ -8,7 +8,7 @@ bp = Blueprint('categoria', __name__,url_prefix="/categoria/")
 @bp.route("/")
 def category():
     consulta = """
-        SELECT name FROM  category
+        SELECT name, category_id AS CategoriaId FROM  category
         ORDER BY name;
         """
     con = db.get_db()
@@ -19,14 +19,14 @@ def category():
     return pagina 
 
 @bp.route('/<int:id>')
-def category():
+def detalles(id):
     consulta = """
-        SELECT name FROM category
-        WHERE category_id = 4
+        SELECT name, category_id AS CategoriaId FROM category
+        WHERE category_id = ?
         ORDER BY name;
         """
     con = db.get_db()
-    res = con.execute(consulta)
+    res = con.execute(consulta,(id,))
     lista_category = res.fetchall()
     pagina = render_template("category.html", categorias = lista_category)
 

@@ -12,11 +12,12 @@ with app.app_context():
 def hello():
     return 'Hello, World!'
 
-from . import categoria
+from . import categoria,actores,lenguaje
 app.register_blueprint(categoria.bp)
-
-from . import lenguaje
+app.register_blueprint(actores.bp)
 app.register_blueprint(lenguaje.bp)
+
+
 
 
 
