@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="#" />
-  </head>
-  <body>
-    <h1>Lenguajes</h1>
+{{% extends 'base.html' %}}
+{{% block titulo %}} lenguaje {{endblock}} 
+{{% block encabezado %}} lenguaje:  {{endblock}} 
     <ul>
       {% for lenguaje in lenguajes %}
       <li>{{ lenguaje['name'] }}</li>

@@ -1,6 +1,5 @@
-{% block header %}
-<h1>{% block title %}Lista de Categorias {% endblock %}</h1>
-{% endblock %} {% block content %}
+{{% extends 'base.html' %}} {{% block titulo %}} categoria {{endblock}} {{%block
+encabezado %}} categoria: {{endblock}}
 <ul>
   {% for categoria in categorias %}
   <li>
